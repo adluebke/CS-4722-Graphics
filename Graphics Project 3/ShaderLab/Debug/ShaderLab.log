@@ -1,0 +1,23 @@
+﻿  main.cpp
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(220): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(235): warning C4305: 'initializing': truncation from 'double' to 'float'
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(242): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(243): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(244): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(251): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(255): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(256): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(257): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(263): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(268): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(269): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(270): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(276): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(283): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(284): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(285): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(291): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(305): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+c:\users\andrew\documents\graphics project 3\shaderlab\main.cpp(318): warning C4244: '=': conversion from 'double' to 'GLfloat', possible loss of data
+  ShaderLab.vcxproj -> C:\Users\Andrew\Documents\Graphics Project 3\Debug\Project3.exe
+  ShaderLab.vcxproj -> C:\Users\Andrew\Documents\Graphics Project 3\Debug\Project3.pdb (Partial PDB)

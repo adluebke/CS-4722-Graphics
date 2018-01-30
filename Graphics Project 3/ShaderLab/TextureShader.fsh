@@ -1,0 +1,90 @@
+#version 150
+
+in vec3 fN;		
+in vec3 fE;
+in vec3 fL;
+
+out vec4 fColor;
+
+in vec2 texCoord;				// NEW!! This is the UV
+uniform sampler2D texture;		// NEW!! This is the texture
+
+uniform vec4 ambient, diffuse, specular;	
+float shininess;
+uniform float bumpValue;
+float Kd;
+vec4 newColor;
+
+// Stolen from http://www.neilmendoza.com/glsl-rotation-about-an-arbitrary-axis/
+mat4 rotationMatrix(vec3 axis, float angle)
+{
+    axis = normalize(axis);
+    float s = sin(angle);
+    float c = cos(angle);
+    float oc = 1.0 - c;
+    
+    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
+                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
+                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+                0.0,                                0.0,                                0.0,                                1.0);
+}
+
+void main () {
+
+	vec3 N = normalize (fN);	// the Normal
+	vec3 L = normalize (fL);	// the Light direction
+	vec3 E = normalize (-fE);	// the vertex position
+	vec3 H = normalize (L + E); // the Half vector
+
+	// Take cross product of actual normal with forward vector to determine axis of rotation
+	vec3 crosser = cross (N, vec3(0, 0, 1));
+	// Figure out how far the normal has been rotated
+	float rotter = acos(dot(vec3(0, 0, 1), N));
+	
+	// Shift the texture coordinates.  bumpValue increases each frame
+	vec2 newTexCoord = texCoord;
+	newTexCoord.x += bumpValue;
+	newTexCoord.y += bumpValue;
+
+	// Now, rotate the texture normal by the amount between the forward vector and the actual normal
+	mat4 rotMat = rotationMatrix(crosser, rotter);
+	vec3 offset = (rotMat*texture2D(texture, newTexCoord)).xyz;
+
+	// Include the offset in the normal N
+	N = normalize (N+offset);
+
+	newColor = diffuse;
+
+	if(dot(N, E) > 0.98)
+	{
+		Kd = 0.0f;
+		newColor = vec4(0.0f, 0.0f, 0.0f, 1.0f);
+	}
+	else if(dot(N, E) > 0.91)
+	{
+		Kd = 0.8f;
+		newColor = vec4(0.0f, 0.12f, 0.92f, 1.0f);
+	}
+	else
+	{
+		Kd = 0.85f;
+	}
+	
+	
+
+	shininess = 255;
+	// Calculate the diffuse part - but don't go negative!
+	//float Kd = max (dot(N, L), 0.2);
+	vec4 dif = Kd*newColor;				// ... and then color
+
+	// Calculate the specular part. 
+	float Ks = pow (max(dot(N, H), 0.0), shininess);	// Intensity
+	vec4 spec = Ks*specular;							// ... and then color
+	if (dot(N, L) < 0.0) {								// But only if the light is in front!
+		spec = vec4(0.0, 0.0, 0.0, 1.0);
+	}
+
+	// The final color is a combination of all of these
+	fColor = ambient + dif + spec;//+0.5*texture2D(texture, newTexCoord);
+	fColor.a = 1.0;
+}
